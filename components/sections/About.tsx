@@ -29,7 +29,7 @@ export default function About() {
           scrollTrigger: {
             trigger: el,
             start: 'top 85%',
-            toggleActions: 'play none none reverse',
+            toggleActions: 'play none none none',
           },
           delay: i * 0.07,
         });
@@ -42,7 +42,7 @@ export default function About() {
         scrollTrigger: {
           trigger: '.about-image',
           start: 'top 75%',
-          toggleActions: 'play none none reverse',
+          toggleActions: 'play none none none',
         },
       });
 
@@ -67,12 +67,13 @@ export default function About() {
       ref={containerRef}
       id="about"
       className="bg-[#0A0A0A] py-32 px-6 overflow-hidden"
+      style={{ opacity: 1 }}
     >
       <div className="max-w-[1280px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
         {/* Left: Text */}
         <div>
-          <p className="about-line text-[#1A6BFF] text-sm font-medium tracking-[0.2em] uppercase mb-6">
+          <p className="about-line text-[#1A6BFF] text-sm font-medium tracking-[0.2em] uppercase mb-6" style={{ opacity: 1 }}>
             About
           </p>
 
@@ -81,27 +82,28 @@ export default function About() {
             style={{
               fontFamily: 'var(--font-clash-display), Space Grotesk, sans-serif',
               fontSize: 'clamp(2rem, 5vw, 4rem)',
+              opacity: 1,
             }}
           >
             Cape Town&apos;s AI guy.
           </h2>
 
-          <p className="about-line text-white/60 text-base leading-relaxed mb-5">
+          <p className="about-line text-white/60 text-base leading-relaxed mb-5" style={{ opacity: 1 }}>
             I&apos;m Dylan Wichmann — Cape Town-based AI systems architect and consultant. I don&apos;t just talk about AI. I build it, deploy it, and hand you the keys.
           </p>
 
-          <p className="about-line text-white/60 text-base leading-relaxed mb-5">
+          <p className="about-line text-white/60 text-base leading-relaxed mb-5" style={{ opacity: 1 }}>
             My work: designing multi-agent systems that run 24/7 on your own hardware, doing the work of an entire operations team without the headcount.
           </p>
 
-          <p className="about-line text-white/60 text-base leading-relaxed mb-10">
+          <p className="about-line text-white/60 text-base leading-relaxed mb-10" style={{ opacity: 1 }}>
             Built for South African businesses. No USD cloud bills, no latency issues, no vendor lock-in. Your AI stack, on your terms.
           </p>
 
           {/* Aside stats */}
           <div className="grid grid-cols-3 gap-6 border-t border-[#2A2A2A] pt-8">
             {ASIDE_STATS.map(({ value, label }) => (
-              <div key={label} className="about-line">
+              <div key={label} className="about-line" style={{ opacity: 1 }}>
                 <p
                   className="font-bold text-white text-2xl mb-1"
                   style={{ fontFamily: 'var(--font-clash-display), Space Grotesk, sans-serif' }}
@@ -117,7 +119,7 @@ export default function About() {
         {/* Right: Photo */}
         <div
           className="about-image relative rounded-2xl overflow-hidden max-w-[480px] mx-auto lg:mx-0 w-full"
-          style={{ aspectRatio: '4/5' }}
+          style={{ aspectRatio: '4/5', opacity: 1 }}
         >
           <Image
             src="/images/hero-dylan.png"

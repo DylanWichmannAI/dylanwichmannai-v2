@@ -156,7 +156,7 @@ export default function Hero() {
 
           <div ref={ctaRef} className="flex flex-wrap gap-4">
             <MagneticButton
-              href="#contact"
+              href="mailto:admin@dylanwichmannai.com"
               className="px-8 py-4 bg-[#1A6BFF] text-white font-medium rounded-full text-base hover:bg-[#0055E0] transition-colors"
               data-cursor-label="Book"
             >

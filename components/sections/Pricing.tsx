@@ -2,49 +2,22 @@
 
 import { motion } from 'framer-motion';
 import MagneticButton from '@/components/ui/MagneticButton';
-import { Check } from 'lucide-react';
 
 const PLANS = [
   {
-    name: 'DIY',
-    price: 'R2,500–R5,000',
-    description: 'Your hardware, our templates.',
-    features: [
-      'Pre-built agent templates',
-      'Email support',
-      'Self-service setup guides',
-      'Community access',
-    ],
-    cta: 'Get started',
+    name: 'Starter',
+    description: 'Perfect for businesses ready to begin their AI journey. Get started with the foundations.',
     highlighted: false,
   },
   {
-    name: 'Guided',
-    price: 'R7,500–R15,000',
-    description: 'Hands-on setup. Custom architecture.',
-    features: [
-      'Custom AI architecture design',
-      'Hands-on deployment assistance',
-      '30 days priority support',
-      'Integration with your tools',
-      'Performance tuning',
-    ],
-    cta: 'Book a call',
+    name: 'Growth',
+    description: 'For businesses ready to scale. Full AI deployment with custom automation pipelines.',
     highlighted: true,
     badge: 'Most Popular',
   },
   {
-    name: 'Done-for-You',
-    price: 'R15,000–R35,000',
-    description: 'Discovery → Deployment. Full service.',
-    features: [
-      'Full discovery workshop',
-      'Custom agent development',
-      '90 days premium support',
-      'Team training included',
-      'Complete operation handoff',
-    ],
-    cta: 'Let\'s talk',
+    name: 'Enterprise',
+    description: 'Total business transformation. End-to-end AI infrastructure, custom agent networks.',
     highlighted: false,
   },
 ];
@@ -57,21 +30,18 @@ export default function Pricing() {
     >
       <div className="max-w-[1280px] mx-auto">
 
-        <div className="mb-16">
-          <p className="text-[#1A6BFF] text-sm font-medium tracking-[0.2em] uppercase mb-4">
-            Pricing
-          </p>
+        <div className="mb-16 text-center">
           <h2
-            className="font-bold text-white mb-4"
+            className="font-bold text-white mb-6"
             style={{
               fontFamily: 'var(--font-clash-display), Space Grotesk, sans-serif',
               fontSize: 'clamp(2rem, 4vw, 3.5rem)',
             }}
           >
-            Simple, transparent pricing.
+            Ready to transform your business?
           </h2>
-          <p className="text-white/50 text-base max-w-xl">
-            All prices in South African Rand. No hidden fees. No USD subscription surprise.
+          <p className="text-white/50 text-base max-w-2xl mx-auto">
+            Every engagement starts with a free discovery call. We&apos;ll map out exactly what AI can do for your business — no obligation.
           </p>
         </div>
 
@@ -95,46 +65,32 @@ export default function Pricing() {
                 </div>
               )}
 
-              <div className="mb-6">
+              <div className="mb-6 flex-1">
                 <p
-                  className="text-white/50 text-sm font-medium uppercase tracking-wider mb-2"
+                  className="font-bold text-white text-2xl mb-4"
+                  style={{ fontFamily: 'var(--font-clash-display), Space Grotesk, sans-serif' }}
                 >
                   {plan.name}
                 </p>
-                <p
-                  className="font-bold text-white text-3xl mb-2"
-                  style={{ fontFamily: 'var(--font-clash-display), Space Grotesk, sans-serif' }}
-                >
-                  {plan.price}
-                </p>
-                <p className="text-white/40 text-sm">{plan.description}</p>
+                <p className="text-white/60 text-sm leading-relaxed">{plan.description}</p>
               </div>
 
-              <ul className="space-y-3 mb-8 flex-1">
-                {plan.features.map((feature) => (
-                  <li key={feature} className="flex items-start gap-3">
-                    <Check size={14} className="text-[#1A6BFF] mt-0.5 flex-shrink-0" />
-                    <span className="text-white/60 text-sm">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-
               <MagneticButton
-                href="#contact"
+                href="mailto:admin@dylanwichmannai.com"
                 className={`w-full py-3 rounded-full text-sm font-medium text-center transition-colors ${
                   plan.highlighted
                     ? 'bg-[#1A6BFF] text-white hover:bg-[#0055E0]'
                     : 'border border-white/20 text-white hover:border-white/40'
                 }`}
               >
-                {plan.cta} →
+                Book a Discovery Call →
               </MagneticButton>
             </motion.div>
           ))}
         </div>
 
-        <p className="text-center text-white/30 text-sm mt-8">
-          Not sure which fits? <a href="#contact" className="text-[#1A6BFF] hover:underline">Book a free 30-min discovery call.</a> No pressure.
+        <p className="text-center text-white/30 text-sm mt-10">
+          All engagements are tailored. Dylan will scope your project personally.
         </p>
       </div>
     </section>

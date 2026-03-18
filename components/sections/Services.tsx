@@ -12,28 +12,28 @@ const SERVICES = [
     title: 'AI Agent Deployment',
     description:
       'Deploy ready-made or custom AI agents that run 24/7. From data processing to client communication — always on, never tired.',
-    price: 'From R7,500',
+    price: 'Book a call for pricing',
   },
   {
     number: '02',
     title: 'Workflow Automation',
     description:
       'Map your bottlenecks. Automate them. Cut manual steps by up to 90% and free your team for the work that actually matters.',
-    price: 'From R5,000',
+    price: 'Book a call for pricing',
   },
   {
     number: '03',
     title: 'AI Coaching',
     description:
       'One-on-one sessions. Learn to design, deploy, and manage your own AI systems — without us holding your hand forever.',
-    price: 'From R2,500/session',
+    price: 'Book a call for pricing',
   },
   {
     number: '04',
     title: 'Done-for-You Deployment',
     description:
       'Full service. Discovery → Architecture → Deployment → Support. A complete AI operations team in 4–6 weeks.',
-    price: 'From R15,000',
+    price: 'Book a call for pricing',
   },
 ];
 
@@ -53,7 +53,7 @@ export default function Services() {
         scrollTrigger: {
           trigger: '.services-header',
           start: 'top 85%',
-          toggleActions: 'play none none reverse',
+          toggleActions: 'play none none none',
         },
       });
 
@@ -67,11 +67,12 @@ export default function Services() {
       ref={containerRef}
       id="services"
       className="bg-[#111111] py-32 px-6"
+      style={{ opacity: 1 }}
     >
       <div className="max-w-[1280px] mx-auto">
 
         {/* Header */}
-        <div className="services-header mb-16">
+        <div className="services-header mb-16" style={{ opacity: 1 }}>
           <p className="text-[#1A6BFF] text-sm font-medium tracking-[0.2em] uppercase mb-4">
             Services
           </p>

@@ -22,6 +22,17 @@ export default function Navigation() {
     return () => { document.body.style.overflow = ''; };
   }, [menuOpen]);
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.startsWith('#')) {
+      e.preventDefault();
+      const target = document.querySelector(href);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+      setMenuOpen(false);
+    }
+  };
+
   return (
     <>
       <nav
@@ -48,6 +59,7 @@ export default function Navigation() {
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
+                onClick={(e) => handleNavClick(e, `#${item.toLowerCase()}`)}
                 className="text-white/60 hover:text-white transition-colors text-sm tracking-wide"
               >
                 {item}
@@ -58,7 +70,7 @@ export default function Navigation() {
           {/* CTA */}
           <div className="hidden md:block">
             <MagneticButton
-              href="#contact"
+              href="mailto:admin@dylanwichmannai.com"
               className="px-5 py-2.5 bg-[#1A6BFF] text-white text-sm font-medium rounded-full hover:bg-[#0055E0] transition-colors"
             >
               Book a Call
@@ -96,11 +108,11 @@ export default function Navigation() {
           menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
       >
-        {[...NAV_LINKS, 'Book a Call'].map((item, i) => (
+        {NAV_LINKS.map((item, i) => (
           <a
             key={item}
-            href={`#${item.toLowerCase().replace(/\s+/g, '-')}`}
-            onClick={() => setMenuOpen(false)}
+            href={`#${item.toLowerCase()}`}
+            onClick={(e) => handleNavClick(e, `#${item.toLowerCase()}`)}
             className="text-white text-5xl font-bold hover:text-[#1A6BFF] transition-colors"
             style={{
               fontFamily: 'var(--font-clash-display), Space Grotesk, sans-serif',
@@ -113,6 +125,20 @@ export default function Navigation() {
             {item}
           </a>
         ))}
+        <a
+          href="mailto:admin@dylanwichmannai.com"
+          onClick={() => setMenuOpen(false)}
+          className="text-white text-5xl font-bold hover:text-[#1A6BFF] transition-colors"
+          style={{
+            fontFamily: 'var(--font-clash-display), Space Grotesk, sans-serif',
+            animationDelay: `${NAV_LINKS.length * 0.08}s`,
+            opacity: menuOpen ? 1 : 0,
+            transform: menuOpen ? 'translateY(0)' : 'translateY(20px)',
+            transition: `opacity 0.4s ease ${NAV_LINKS.length * 0.07}s, transform 0.4s ease ${NAV_LINKS.length * 0.07}s`,
+          }}
+        >
+          Book a Call
+        </a>
       </div>
     </>
   );

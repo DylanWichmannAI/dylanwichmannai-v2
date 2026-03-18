@@ -9,8 +9,8 @@ const STATS: Array<{
   label: string;
 }> = [
   { end: 40, suffix: '+', display: null, label: 'Hours saved per client / week' },
-  { end: 90, suffix: '%', display: null, label: 'Process consistency rate' },
-  { end: 50, suffix: '%', display: null, label: 'Operational cost reduction' },
+  { end: 99, suffix: '%', display: null, label: 'Process consistency rate' },
+  { end: 60, suffix: '%', display: null, label: 'Average cost reduction' },
   { end: null, suffix: '', display: '4–6 wks', label: 'To full deployment' },
 ];
 
