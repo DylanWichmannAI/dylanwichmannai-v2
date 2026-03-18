@@ -1,121 +1,55 @@
-'use client';
-
-import { useRef } from 'react';
-import { useGSAP } from '@gsap/react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-const STEPS = [
-  {
-    number: '01',
-    title: 'Discovery',
-    description:
-      "We understand your business, map your workflows, and identify the 3 highest-leverage automation opportunities. No fluff — just clarity.",
-  },
-  {
-    number: '02',
-    title: 'Design',
-    description:
-      'Architect your AI system: which agents, what they do, how they interact, and what success looks like before we write a single line.',
-  },
-  {
-    number: '03',
-    title: 'Deployment',
-    description:
-      'Build and deploy your agents on your hardware. Integrate with your existing tools. Your system, on your terms.',
-  },
-  {
-    number: '04',
-    title: 'Support',
-    description:
-      'Monitor, optimise, improve. Your system gets better over time. We stay close so nothing breaks silently.',
-  },
-];
-
 export default function Process() {
-  const containerRef = useRef<HTMLElement>(null);
-
-  useGSAP(
-    () => {
-      gsap.registerPlugin(ScrollTrigger);
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-      gsap.utils.toArray<HTMLElement>('.process-step').forEach((step) => {
-        gsap.from(step, {
-          x: -40,
-          opacity: 0,
-          duration: 0.7,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: step,
-            start: 'top 80%',
-            toggleActions: 'play none none none',
-            once: true,
-          },
-        });
-      });
-
-      return () => ScrollTrigger.getAll().forEach((t) => t.kill());
+  const steps = [
+    {
+      number: "01",
+      title: "Discovery Call",
+      description: "We map your business, your bottlenecks, and your goals. Free, no obligation. Usually 30 minutes."
     },
-    { scope: containerRef }
-  );
+    {
+      number: "02",
+      title: "Custom Proposal",
+      description: "I design a system tailored to your operation — the right agents, the right workflows. You approve the scope before anything is built."
+    },
+    {
+      number: "03",
+      title: "Build & Deploy",
+      description: "I build it, test it, deploy it on dedicated hardware. You get a full handover session and documentation."
+    },
+    {
+      number: "04",
+      title: "Ongoing Support",
+      description: "Monthly retainer or project basis. The system evolves as your business grows. You're never on your own."
+    }
+  ];
 
   return (
-    <section
-      ref={containerRef}
-      id="process"
-      className="bg-[#F8F8F6] py-32 px-6"
-      style={{ opacity: 1, visibility: 'visible' }}
-      data-visible="true"
-    >
-      <div className="max-w-[1280px] mx-auto">
-
-        {/* Header */}
-        <div className="mb-20" style={{ opacity: 1 }}>
-          <p className="text-[#1A6BFF] text-sm font-medium tracking-[0.2em] uppercase mb-4">
-            Process
-          </p>
-          <h2
-            className="font-bold text-[#0A0A0A]"
-            style={{
-              fontFamily: 'var(--font-clash-display), Space Grotesk, sans-serif',
-              fontSize: 'clamp(2rem, 4vw, 3.5rem)',
-            }}
-          >
-            How we work together.
-          </h2>
-        </div>
-
-        {/* Steps — clean flex card layout, no overlap */}
-        <div className="max-w-[760px] flex flex-col gap-12">
-          {STEPS.map((step) => (
-            <div
-              key={step.number}
-              className="process-step flex items-start gap-6"
-              style={{ opacity: 1, visibility: 'visible' }}
-            >
-              {/* Number — fixed width, large accent, no overlap */}
-              <div className="flex-shrink-0 w-20 text-right">
-                <span
-                  className="font-bold leading-none text-[#E5E7EB]"
-                  style={{
-                    fontFamily: 'var(--font-clash-display), Space Grotesk, sans-serif',
-                    fontSize: 'clamp(3rem, 5vw, 4.5rem)',
-                  }}
-                >
-                  {step.number}
-                </span>
-              </div>
-
-              {/* Content */}
-              <div className="flex-1 pt-2 pb-2 border-b border-[#E5E7EB] last:border-0">
-                <h3
-                  className="font-semibold text-[#0A0A0A] text-xl mb-3"
-                  style={{ fontFamily: 'var(--font-clash-display), Space Grotesk, sans-serif' }}
-                >
+    <section id="process" style={{ padding: '96px 0', backgroundColor: '#F8F8F6' }}>
+      <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 24px' }}>
+        <p style={{ fontSize: '13px', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#1A6BFF', marginBottom: '16px' }}>
+          The Process
+        </p>
+        <h2 style={{ fontSize: '42px', fontWeight: 700, color: '#0A0A0A', marginBottom: '64px', lineHeight: 1.15 }}>
+          How we work together.
+        </h2>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(460px, 1fr))', gap: '48px' }}>
+          {steps.map((step) => (
+            <div key={step.number} style={{ display: 'flex', gap: '24px', alignItems: 'flex-start' }}>
+              <span style={{
+                fontSize: '64px',
+                fontWeight: 800,
+                color: '#E5E7EB',
+                lineHeight: 1,
+                flexShrink: 0,
+                width: '72px',
+                textAlign: 'right'
+              }}>
+                {step.number}
+              </span>
+              <div style={{ paddingTop: '8px' }}>
+                <h3 style={{ fontSize: '20px', fontWeight: 600, color: '#0A0A0A', marginBottom: '10px' }}>
                   {step.title}
                 </h3>
-                <p className="text-[#6B7280] text-sm leading-relaxed">
+                <p style={{ fontSize: '16px', color: '#6B7280', lineHeight: 1.7 }}>
                   {step.description}
                 </p>
               </div>
