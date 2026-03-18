@@ -59,7 +59,7 @@ export default function RootLayout({
           href="https://api.fontshare.com/v2/css?f[]=clash-display@700,600,500,400&display=swap"
         />
       </head>
-      <body className="bg-[#0A0A0A] text-white font-sans overflow-x-hidden">
+      <body className="bg-white text-[#0A0A0A] font-sans overflow-x-hidden">
         <CustomCursor />
         <Navigation />
         <ClientLayout>{children}</ClientLayout>
