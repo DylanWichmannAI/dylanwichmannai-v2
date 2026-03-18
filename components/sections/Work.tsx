@@ -1,27 +1,27 @@
 const PROJECTS = [
   {
-    title: 'Multi-Agent CRM System',
-    client: 'Cape Town SMB',
-    result: '40 hours/week saved on data entry and lead follow-ups.',
-    tags: ['CRM', 'Automation', 'Lead Management'],
+    title: 'AI Operations System — DWAI',
+    description: 'Built a 26-agent autonomous system running on a single Mac Mini. Squads for health monitoring, build operations, content, client intake, and security — all self-managing.',
+    outcome: '24/7 autonomous operations. Zero cloud dependency.',
+    tags: ['26 Agents', 'OpenClaw', 'Mac Mini', 'Cape Town'],
   },
   {
-    title: 'AI Customer Support System',
-    client: 'E-commerce Brand, SA',
-    result: '90% of customer queries handled automatically — 24/7, no human touchpoints.',
-    tags: ['Support', 'Telegram', 'NLP'],
+    title: 'Instagram Content Pipeline',
+    description: 'Automated content planning, generation, posting, and engagement across 5 Instagram accounts. AI handles caption writing, image generation, scheduling, and comment replies.',
+    outcome: '5 accounts. Zero manual posting.',
+    tags: ['Content', 'Instagram', 'Automation'],
   },
   {
-    title: 'Financial Reporting Automation',
-    client: 'Professional Services, JHB',
-    result: 'R50K/month in consultant fees replaced by a fully autonomous reporting system.',
-    tags: ['Finance', 'Reporting', 'Google Drive'],
+    title: 'Client Intake & CRM Pipeline',
+    description: 'Built an AI-powered intake system that qualifies leads, routes enquiries, maintains a live CRM, and follows up automatically — all without human intervention.',
+    outcome: 'No lead falls through the cracks.',
+    tags: ['CRM', 'Lead Qualification', 'Automation'],
   },
   {
-    title: 'Workflow Automation Suite',
-    client: 'Operations Team, Durban',
-    result: '80% reduction in manual process steps across 5 departments.',
-    tags: ['Operations', 'Automation', 'On-Premise'],
+    title: 'Self-Healing Infrastructure',
+    description: 'The system monitors itself. Sentinel detects issues, Medic diagnoses them, Terminal applies fixes, Gauge verifies. Dylan is alerted only when a human decision is actually needed.',
+    outcome: 'Infrastructure that heals itself.',
+    tags: ['DevOps', 'Self-Healing', 'Monitoring'],
   },
 ];
 
@@ -32,9 +32,12 @@ export default function Work() {
         <p style={{ fontSize: '13px', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#1A6BFF', marginBottom: '16px' }}>
           Work
         </p>
-        <h2 style={{ fontSize: '42px', fontWeight: 700, color: '#0A0A0A', marginBottom: '64px', lineHeight: 1.15 }}>
-          Selected case studies.
+        <h2 style={{ fontSize: '42px', fontWeight: 700, color: '#0A0A0A', marginBottom: '16px', lineHeight: 1.15 }}>
+          What&apos;s been built.
         </h2>
+        <p style={{ fontSize: '18px', color: '#6B7280', marginBottom: '64px', lineHeight: 1.6, maxWidth: '600px' }}>
+          Real systems. Real results. All running right now.
+        </p>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(460px, 1fr))', gap: '24px' }}>
           {PROJECTS.map((p, i) => (
             <div key={i} style={{
@@ -42,7 +45,6 @@ export default function Work() {
               border: '1px solid #E5E7EB',
               borderRadius: '16px',
               padding: '40px',
-              transition: 'box-shadow 0.2s ease'
             }}>
               <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '20px' }}>
                 {p.tags.map(tag => (
@@ -56,8 +58,10 @@ export default function Work() {
                 ))}
               </div>
               <h3 style={{ fontSize: '20px', fontWeight: 600, color: '#0A0A0A', marginBottom: '12px' }}>{p.title}</h3>
-              <p style={{ fontSize: '15px', color: '#6B7280', lineHeight: 1.7, marginBottom: '24px' }}>{p.result}</p>
-              <p style={{ fontSize: '13px', color: '#9CA3AF' }}>— {p.client}</p>
+              <p style={{ fontSize: '15px', color: '#6B7280', lineHeight: 1.7, marginBottom: '24px' }}>{p.description}</p>
+              <div style={{ paddingTop: '20px', borderTop: '1px solid #F3F4F6' }}>
+                <p style={{ fontSize: '14px', fontWeight: 600, color: '#1A6BFF' }}>→ {p.outcome}</p>
+              </div>
             </div>
           ))}
         </div>

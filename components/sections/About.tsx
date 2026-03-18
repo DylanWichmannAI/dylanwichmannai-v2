@@ -1,138 +1,61 @@
-'use client';
-
-import { useRef } from 'react';
 import Image from 'next/image';
-import { useGSAP } from '@gsap/react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-const ASIDE_STATS = [
-  { value: '3+', label: 'years building AI systems' },
-  { value: '50+', label: 'automations deployed' },
-  { value: 'R0', label: 'cloud dependency for clients' },
-];
 
 export default function About() {
-  const containerRef = useRef<HTMLElement>(null);
-
-  useGSAP(
-    () => {
-      gsap.registerPlugin(ScrollTrigger);
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-      gsap.utils.toArray<HTMLElement>('.about-line').forEach((el, i) => {
-        gsap.from(el, {
-          x: -40,
-          opacity: 0,
-          duration: 0.7,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: el,
-            start: 'top 85%',
-            toggleActions: 'play none none none',
-          },
-          delay: i * 0.07,
-        });
-      });
-
-      gsap.from('.about-image', {
-        clipPath: 'inset(0 100% 0 0)',
-        duration: 1.2,
-        ease: 'power4.inOut',
-        scrollTrigger: {
-          trigger: '.about-image',
-          start: 'top 75%',
-          toggleActions: 'play none none none',
-        },
-      });
-
-      gsap.to('.about-image', {
-        yPercent: -8,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: 'top bottom',
-          end: 'bottom top',
-          scrub: true,
-        },
-      });
-
-      return () => ScrollTrigger.getAll().forEach((t) => t.kill());
-    },
-    { scope: containerRef }
-  );
-
   return (
-    <section
-      ref={containerRef}
-      id="about"
-      className="bg-white py-32 px-6 overflow-hidden"
-      style={{ opacity: 1 }}
-    >
-      <div className="max-w-[1280px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+    <section id="about" style={{ padding: '112px 0', backgroundColor: '#FFFFFF' }}>
+      <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 24px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', alignItems: 'center' }}>
 
-        {/* Left: Text */}
-        <div>
-          <p className="about-line text-[#1A6BFF] text-sm font-medium tracking-[0.2em] uppercase mb-6" style={{ opacity: 1 }}>
-            About
-          </p>
+          {/* Left — Image */}
+          <div style={{ position: 'relative', borderRadius: '16px', overflow: 'hidden', aspectRatio: '4/5' }}>
+            <Image
+              src="/images/hero-dylan.png"
+              alt="Dylan Wichmann"
+              fill
+              style={{ objectFit: 'cover', objectPosition: 'center top' }}
+            />
+          </div>
 
-          <h2
-            className="about-line font-bold text-[#0A0A0A] leading-tight mb-8"
-            style={{
-              fontFamily: 'var(--font-clash-display), Space Grotesk, sans-serif',
-              fontSize: 'clamp(2rem, 5vw, 4rem)',
-              opacity: 1,
-            }}
-          >
-            Cape Town&apos;s AI guy.
-          </h2>
+          {/* Right — Copy */}
+          <div>
+            <p style={{ fontSize: '13px', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#1A6BFF', marginBottom: '16px' }}>
+              About
+            </p>
+            <h2 style={{ fontSize: '36px', fontWeight: 700, color: '#0A0A0A', lineHeight: 1.2, marginBottom: '32px' }}>
+              Cape Town. One Mac Mini.<br />26 AI agents.
+            </h2>
 
-          <p className="about-line text-[#6B7280] text-base leading-relaxed mb-5" style={{ opacity: 1 }}>
-            I&apos;m Dylan Wichmann — Cape Town-based AI systems architect and consultant. I don&apos;t just talk about AI. I build it, deploy it, and hand you the keys.
-          </p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+              <p style={{ fontSize: '16px', color: '#374151', lineHeight: 1.8 }}>
+                I spent 8 years as a professional hydrofoiler. I know what it means to build a system — to train every day, to refine every detail, to trust the process when results aren&apos;t visible yet.
+              </p>
+              <p style={{ fontSize: '16px', color: '#374151', lineHeight: 1.8 }}>
+                When I transitioned out of sport, I went through the hardest years of my life. Coming through that, I rebuilt everything — including how I think about leverage, automation, and what&apos;s actually possible when you&apos;re building with the right tools.
+              </p>
+              <p style={{ fontSize: '16px', color: '#374151', lineHeight: 1.8 }}>
+                I built a 26-agent AI system that runs my entire business from a Mac Mini in Marina da Gama. It manages my content across 5 Instagram accounts, handles client intake, monitors itself, and runs 24/7 without me touching it.
+              </p>
+              <p style={{ fontSize: '16px', color: '#374151', lineHeight: 1.8 }}>
+                That&apos;s what I build for you.
+              </p>
+            </div>
 
-          <p className="about-line text-[#6B7280] text-base leading-relaxed mb-5" style={{ opacity: 1 }}>
-            My work: designing multi-agent systems that run 24/7 on your own hardware, doing the work of an entire operations team without the headcount.
-          </p>
-
-          <p className="about-line text-[#6B7280] text-base leading-relaxed mb-10" style={{ opacity: 1 }}>
-            Built for South African businesses. No USD cloud bills, no latency issues, no vendor lock-in. Your AI stack, on your terms.
-          </p>
-
-          {/* Aside stats */}
-          <div className="grid grid-cols-3 gap-6 border-t border-[#E5E7EB] pt-8">
-            {ASIDE_STATS.map(({ value, label }) => (
-              <div key={label} className="about-line" style={{ opacity: 1 }}>
-                <p
-                  className="font-bold text-[#0A0A0A] text-2xl mb-1"
-                  style={{ fontFamily: 'var(--font-clash-display), Space Grotesk, sans-serif' }}
-                >
-                  {value}
-                </p>
-                <p className="text-[#6B7280] text-xs leading-snug">{label}</p>
+            <div style={{ display: 'flex', gap: '32px', marginTop: '40px', paddingTop: '40px', borderTop: '1px solid #F3F4F6' }}>
+              <div>
+                <p style={{ fontSize: '28px', fontWeight: 700, color: '#0A0A0A' }}>26</p>
+                <p style={{ fontSize: '13px', color: '#6B7280' }}>AI agents, my system</p>
               </div>
-            ))}
+              <div>
+                <p style={{ fontSize: '28px', fontWeight: 700, color: '#0A0A0A' }}>5</p>
+                <p style={{ fontSize: '13px', color: '#6B7280' }}>IG accounts, automated</p>
+              </div>
+              <div>
+                <p style={{ fontSize: '28px', fontWeight: 700, color: '#0A0A0A' }}>1</p>
+                <p style={{ fontSize: '13px', color: '#6B7280' }}>Mac Mini, Cape Town</p>
+              </div>
+            </div>
           </div>
-        </div>
 
-        {/* Right: Photo */}
-        <div
-          className="about-image relative rounded-2xl overflow-hidden max-w-[480px] mx-auto lg:mx-0 w-full shadow-sm border border-[#E5E7EB]"
-          style={{ aspectRatio: '4/5', opacity: 1 }}
-        >
-          <Image
-            src="/images/hero-dylan.png"
-            alt="Dylan Wichmann working — Cape Town AI consultant"
-            fill
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
-          {/* Cape Town badge */}
-          <div className="absolute top-6 right-6 bg-white/90 backdrop-blur-md border border-[#E5E7EB] rounded-xl px-4 py-3 shadow-sm">
-            <p className="text-[#6B7280] text-xs uppercase tracking-wider">Based in</p>
-            <p className="text-[#0A0A0A] text-sm font-medium mt-0.5">Cape Town 🇿🇦</p>
-          </div>
         </div>
       </div>
     </section>

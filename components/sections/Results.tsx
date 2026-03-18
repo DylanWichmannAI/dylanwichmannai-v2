@@ -1,67 +1,61 @@
-const TESTIMONIALS = [
+const RESULTS = [
   {
-    quote: "Dylan built us a multi-agent system that handles our entire lead qualification pipeline. What used to take 3 people 20 hours a week now runs automatically 24/7. The ROI was immediate.",
-    author: "Operations Director",
-    company: "Cape Town SMB",
-    result: "40 hrs/week saved",
-    before: "3 staff, 20hrs/week",
-    after: "1 AI agent, zero errors"
+    stat: '26',
+    label: 'AI agents',
+    description: 'Running simultaneously on a single Mac Mini. Health, Operations, Build, Research, Client Services, Content, and Command squads — all autonomous.',
+    note: 'Dylan\'s own system'
   },
   {
-    quote: "We were sceptical about AI at first. Dylan came in, mapped everything out clearly, and within 6 weeks we had a system that answered 90% of customer queries without a human touching it.",
-    author: "Founder",
-    company: "E-commerce Brand, SA",
-    result: "90% query automation",
-    before: "Manual support team",
-    after: "2min average, 24/7"
+    stat: '5',
+    label: 'Instagram accounts',
+    description: 'Managed autonomously — content planned, generated, posted, and engaged with. Zero manual posting.',
+    note: '5,200+ combined followers'
   },
   {
-    quote: "The killer feature was no cloud dependency. As a South African business, not having USD subscription costs and load-shedding risks was the deciding factor. Dylan delivered exactly that.",
-    author: "CEO",
-    company: "Professional Services, JHB",
-    result: "R50K/month saved",
-    before: "R50K/month SaaS stack",
-    after: "R5K/month system cost"
+    stat: '24/7',
+    label: 'Zero downtime',
+    description: 'The system monitors itself, heals itself, and alerts Dylan only when something genuinely needs a human decision.',
+    note: 'Self-healing loop'
+  },
+  {
+    stat: 'R0',
+    label: 'Cloud dependency',
+    description: 'Everything runs on local hardware. No USD SaaS bills. No load-shedding risk. No data leaving your premises without your say-so.',
+    note: 'On-premise by design'
   }
 ];
 
 export default function Results() {
   return (
-    <section id="results" style={{ padding: '96px 0', backgroundColor: '#F8F8F6' }}>
+    <section id="results" style={{ padding: '112px 0', backgroundColor: '#F8F8F6' }}>
       <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 24px' }}>
         <p style={{ fontSize: '13px', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#1A6BFF', marginBottom: '16px' }}>
-          Client Results
+          Proof
         </p>
-        <h2 style={{ fontSize: '42px', fontWeight: 700, color: '#0A0A0A', marginBottom: '64px', lineHeight: 1.15 }}>
-          Real businesses. Real results.
+        <h2 style={{ fontSize: '42px', fontWeight: 700, color: '#0A0A0A', marginBottom: '16px', lineHeight: 1.15 }}>
+          I run this system myself.
         </h2>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '32px' }}>
-          {TESTIMONIALS.map((t, i) => (
+        <p style={{ fontSize: '18px', color: '#6B7280', marginBottom: '64px', lineHeight: 1.6, maxWidth: '600px' }}>
+          Before I build it for you, I built it for me. Here&apos;s what the system actually does.
+        </p>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(460px, 1fr))', gap: '24px' }}>
+          {RESULTS.map((r, i) => (
             <div key={i} style={{
               backgroundColor: '#FFFFFF',
               border: '1px solid #E5E7EB',
-              borderRadius: '12px',
-              padding: '32px',
+              borderRadius: '16px',
+              padding: '40px',
               display: 'flex',
-              flexDirection: 'column',
-              gap: '24px'
+              gap: '24px',
+              alignItems: 'flex-start'
             }}>
-              <p style={{ fontSize: '16px', color: '#374151', lineHeight: 1.7, fontStyle: 'italic' }}>
-                &ldquo;{t.quote}&rdquo;
-              </p>
-              <div style={{ display: 'flex', gap: '24px', padding: '16px 0', borderTop: '1px solid #F3F4F6', borderBottom: '1px solid #F3F4F6' }}>
-                <div>
-                  <p style={{ fontSize: '11px', color: '#9CA3AF', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '4px' }}>Before</p>
-                  <p style={{ fontSize: '13px', color: '#6B7280' }}>{t.before}</p>
-                </div>
-                <div style={{ borderLeft: '1px solid #E5E7EB', paddingLeft: '24px' }}>
-                  <p style={{ fontSize: '11px', color: '#1A6BFF', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '4px', fontWeight: 600 }}>After</p>
-                  <p style={{ fontSize: '13px', color: '#0A0A0A', fontWeight: 600 }}>{t.after}</p>
-                </div>
+              <div style={{ flexShrink: 0 }}>
+                <p style={{ fontSize: '48px', fontWeight: 800, color: '#0A0A0A', lineHeight: 1 }}>{r.stat}</p>
+                <p style={{ fontSize: '13px', fontWeight: 600, color: '#1A6BFF', marginTop: '4px' }}>{r.label}</p>
               </div>
-              <div>
-                <p style={{ fontSize: '14px', fontWeight: 600, color: '#0A0A0A' }}>{t.author}</p>
-                <p style={{ fontSize: '13px', color: '#6B7280' }}>{t.company}</p>
+              <div style={{ borderLeft: '1px solid #E5E7EB', paddingLeft: '24px' }}>
+                <p style={{ fontSize: '15px', color: '#374151', lineHeight: 1.7, marginBottom: '12px' }}>{r.description}</p>
+                <p style={{ fontSize: '12px', color: '#9CA3AF', fontStyle: 'italic' }}>{r.note}</p>
               </div>
             </div>
           ))}
