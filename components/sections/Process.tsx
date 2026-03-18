@@ -63,7 +63,7 @@ export default function Process() {
           scrollTrigger: {
             trigger: step,
             start: 'top 80%',
-            toggleActions: 'play none none reverse',
+            toggleActions: 'play none none none',
           },
         });
       });
@@ -78,6 +78,7 @@ export default function Process() {
       ref={containerRef}
       id="process"
       className="bg-[#0A0A0A] py-32 px-6"
+      style={{ opacity: 1 }}
     >
       <div className="max-w-[1280px] mx-auto">
 
@@ -110,6 +111,7 @@ export default function Process() {
               <div
                 key={step.number}
                 className="process-step relative pl-20 pb-16 last:pb-0"
+                style={{ opacity: 1 }}
               >
                 {/* Number badge */}
                 <div className="absolute left-0 top-0 w-12 h-12 rounded-full bg-[#0A0A0A] border border-[#2A2A2A] flex items-center justify-center z-10">

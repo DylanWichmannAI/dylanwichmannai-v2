@@ -1,11 +1,17 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import PageLoader from '@/components/ui/PageLoader';
 import Footer from '@/components/layout/Footer';
 
 export default function ClientLayout({ children }: { children: React.ReactNode }) {
   const [loaded, setLoaded] = useState(false);
+
+  // Safety fallback: force show content after 3s even if PageLoader fails
+  useEffect(() => {
+    const timer = setTimeout(() => setLoaded(true), 3000);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <>
