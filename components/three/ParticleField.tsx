@@ -32,7 +32,7 @@ function Particles({ count = 250 }: { count?: number }) {
         size={0.04}
         color="#1A6BFF"
         transparent
-        opacity={0.35}
+        opacity={0.25}
         sizeAttenuation
       />
     </points>

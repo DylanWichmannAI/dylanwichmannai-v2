@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
 @theme inline {
-  /* Colors */
-  --color-bg-dark: #0A0A0A;
-  --color-bg-mid: #111111;
-  --color-bg-card: #161616;
-  --color-surface: #1E1E1E;
-  --color-border-subtle: #2A2A2A;
+  /* Colors — Light Theme */
+  --color-bg-dark: #FFFFFF;
+  --color-bg-mid: #F8F8F6;
+  --color-bg-card: #FFFFFF;
+  --color-surface: #F3F4F6;
+  --color-border-subtle: #E5E7EB;
   --color-accent-blue: #1A6BFF;
 
   /* Fonts — Clash Display loaded via fontshare CDN in layout.tsx */
@@ -45,8 +45,8 @@ html {
 }
 
 body {
-  background-color: #0A0A0A;
-  color: #FFFFFF;
+  background-color: #FFFFFF;
+  color: #0A0A0A;
   overflow-x: hidden;
 }
 
@@ -74,7 +74,7 @@ body {
 }
 
 /* Selection color */
-::selection { background: rgba(26, 107, 255, 0.3); color: #fff; }
+::selection { background: rgba(26, 107, 255, 0.2); color: #0A0A0A; }
 
 /* Reduce motion */
 @media (prefers-reduced-motion: reduce) {

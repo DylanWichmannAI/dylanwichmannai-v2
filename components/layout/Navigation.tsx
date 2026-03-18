@@ -39,15 +39,15 @@ export default function Navigation() {
         ref={navRef}
         className={`fixed top-0 left-0 right-0 z-50 px-6 py-5 transition-all duration-500 ${
           scrolled
-            ? 'bg-[#0A0A0A]/90 backdrop-blur-md border-b border-white/5'
-            : 'bg-transparent'
+            ? 'bg-white/95 backdrop-blur-md border-b border-[#E5E7EB] shadow-sm'
+            : 'bg-white/90 backdrop-blur-sm border-b border-[#E5E7EB]'
         }`}
       >
         <div className="max-w-[1280px] mx-auto flex items-center justify-between">
           {/* Logo */}
           <a
             href="/"
-            className="text-2xl font-bold text-white"
+            className="text-2xl font-bold text-[#0A0A0A]"
             style={{ fontFamily: 'var(--font-clash-display), Space Grotesk, sans-serif' }}
           >
             DW
@@ -60,7 +60,7 @@ export default function Navigation() {
                 key={item}
                 href={`#${item.toLowerCase()}`}
                 onClick={(e) => handleNavClick(e, `#${item.toLowerCase()}`)}
-                className="text-white/60 hover:text-white transition-colors text-sm tracking-wide"
+                className="text-[#6B7280] hover:text-[#0A0A0A] transition-colors text-sm tracking-wide"
               >
                 {item}
               </a>
@@ -84,17 +84,17 @@ export default function Navigation() {
             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
           >
             <span
-              className={`block w-6 h-0.5 bg-white transition-all duration-300 ${
+              className={`block w-6 h-0.5 bg-[#0A0A0A] transition-all duration-300 ${
                 menuOpen ? 'rotate-45 translate-y-2' : ''
               }`}
             />
             <span
-              className={`block w-6 h-0.5 bg-white transition-all duration-300 ${
+              className={`block w-6 h-0.5 bg-[#0A0A0A] transition-all duration-300 ${
                 menuOpen ? 'opacity-0' : ''
               }`}
             />
             <span
-              className={`block w-6 h-0.5 bg-white transition-all duration-300 ${
+              className={`block w-6 h-0.5 bg-[#0A0A0A] transition-all duration-300 ${
                 menuOpen ? '-rotate-45 -translate-y-2' : ''
               }`}
             />
@@ -104,7 +104,7 @@ export default function Navigation() {
 
       {/* Mobile overlay */}
       <div
-        className={`fixed inset-0 bg-[#0A0A0A] z-50 flex flex-col justify-center items-center gap-8 transition-all duration-500 ${
+        className={`fixed inset-0 bg-white z-50 flex flex-col justify-center items-center gap-8 transition-all duration-500 ${
           menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
       >
@@ -113,7 +113,7 @@ export default function Navigation() {
             key={item}
             href={`#${item.toLowerCase()}`}
             onClick={(e) => handleNavClick(e, `#${item.toLowerCase()}`)}
-            className="text-white text-5xl font-bold hover:text-[#1A6BFF] transition-colors"
+            className="text-[#0A0A0A] text-5xl font-bold hover:text-[#1A6BFF] transition-colors"
             style={{
               fontFamily: 'var(--font-clash-display), Space Grotesk, sans-serif',
               animationDelay: `${i * 0.08}s`,
@@ -128,7 +128,7 @@ export default function Navigation() {
         <a
           href="mailto:admin@dylanwichmannai.com"
           onClick={() => setMenuOpen(false)}
-          className="text-white text-5xl font-bold hover:text-[#1A6BFF] transition-colors"
+          className="text-[#0A0A0A] text-5xl font-bold hover:text-[#1A6BFF] transition-colors"
           style={{
             fontFamily: 'var(--font-clash-display), Space Grotesk, sans-serif',
             animationDelay: `${NAV_LINKS.length * 0.08}s`,

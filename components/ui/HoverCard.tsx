@@ -30,30 +30,30 @@ export default function HoverCard({
       }}
       whileHover={{ y: -8 }}
       style={{ opacity: 1 }}
-      className="group relative p-8 bg-[#111111] border border-[#2A2A2A] rounded-2xl hover:border-[#1A6BFF]/40 transition-colors duration-300 cursor-pointer"
+      className="group relative p-8 bg-white border border-[#E5E7EB] rounded-2xl hover:border-[#1A6BFF]/40 hover:shadow-md transition-all duration-300 cursor-pointer"
     >
       {/* Hover glow */}
-      <div className="absolute inset-0 rounded-2xl bg-[#1A6BFF]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      <div className="absolute inset-0 rounded-2xl bg-[#1A6BFF]/3 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
       {/* Number */}
       <span className="text-[#1A6BFF] text-sm font-mono font-medium">{number}</span>
 
       {/* Title */}
       <h3
-        className="text-2xl font-semibold text-white mt-3 mb-3"
+        className="text-2xl font-semibold text-[#0A0A0A] mt-3 mb-3"
         style={{ fontFamily: 'var(--font-clash-display), Space Grotesk, sans-serif' }}
       >
         {title}
       </h3>
 
       {/* Description */}
-      <p className="text-white/50 text-sm leading-relaxed mb-6">{description}</p>
+      <p className="text-[#6B7280] text-sm leading-relaxed mb-6">{description}</p>
 
       {/* Price + Arrow */}
       <div className="flex items-center justify-between">
-        <span className="text-white/30 text-sm">{price}</span>
-        <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center group-hover:border-[#1A6BFF] group-hover:bg-[#1A6BFF] transition-all duration-300">
-          <span className="text-white/40 group-hover:text-white text-sm transition-all duration-300 inline-block group-hover:rotate-45">
+        <span className="text-[#9CA3AF] text-sm">{price}</span>
+        <div className="w-8 h-8 rounded-full border border-[#E5E7EB] flex items-center justify-center group-hover:border-[#1A6BFF] group-hover:bg-[#1A6BFF] transition-all duration-300">
+          <span className="text-[#9CA3AF] group-hover:text-white text-sm transition-all duration-300 inline-block group-hover:rotate-45">
             →
           </span>
         </div>

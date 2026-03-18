@@ -40,23 +40,10 @@ export default function Process() {
       gsap.registerPlugin(ScrollTrigger);
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-      // Animate the vertical line drawing down (no opacity change — just scaleY)
-      gsap.from('.process-line', {
-        scaleY: 0,
-        transformOrigin: 'top center',
-        ease: 'none',
-        scrollTrigger: {
-          trigger: '.process-container',
-          start: 'top center',
-          end: 'bottom center',
-          scrub: 1,
-        },
-      });
-
-      // Animate each step FROM an offset — steps start fully visible
       gsap.utils.toArray<HTMLElement>('.process-step').forEach((step) => {
         gsap.from(step, {
           x: -40,
+          opacity: 0,
           duration: 0.7,
           ease: 'power3.out',
           scrollTrigger: {
@@ -77,7 +64,7 @@ export default function Process() {
     <section
       ref={containerRef}
       id="process"
-      className="bg-[#0A0A0A] py-32 px-6"
+      className="bg-[#F8F8F6] py-32 px-6"
       style={{ opacity: 1, visibility: 'visible' }}
       data-visible="true"
     >
@@ -89,7 +76,7 @@ export default function Process() {
             Process
           </p>
           <h2
-            className="font-bold text-white"
+            className="font-bold text-[#0A0A0A]"
             style={{
               fontFamily: 'var(--font-clash-display), Space Grotesk, sans-serif',
               fontSize: 'clamp(2rem, 4vw, 3.5rem)',
@@ -99,45 +86,41 @@ export default function Process() {
           </h2>
         </div>
 
-        {/* Steps */}
-        <div className="process-container relative max-w-[760px]">
-
-          {/* Vertical line */}
-          <div className="absolute left-6 top-0 bottom-0 w-px bg-[#2A2A2A]">
-            <div className="process-line absolute inset-0 bg-[#1A6BFF]" />
-          </div>
-
-          <div className="space-y-0">
-            {STEPS.map((step, i) => (
-              <div
-                key={step.number}
-                className="process-step relative pl-20 pb-16 last:pb-0"
-                style={{ opacity: 1, visibility: 'visible' }}
-                data-visible="true"
-              >
-                {/* Number badge */}
-                <div className="absolute left-0 top-0 w-12 h-12 rounded-full bg-[#0A0A0A] border border-[#2A2A2A] flex items-center justify-center z-10">
-                  <span
-                    className="text-[#1A6BFF] text-xs font-mono font-medium"
-                  >
-                    {step.number}
-                  </span>
-                </div>
-
-                <div className="pt-2">
-                  <h3
-                    className="font-semibold text-white text-xl mb-3"
-                    style={{ fontFamily: 'var(--font-clash-display), Space Grotesk, sans-serif' }}
-                  >
-                    {step.title}
-                  </h3>
-                  <p className="text-white/50 text-sm leading-relaxed max-w-[500px]">
-                    {step.description}
-                  </p>
-                </div>
+        {/* Steps — clean flex card layout, no overlap */}
+        <div className="max-w-[760px] flex flex-col gap-12">
+          {STEPS.map((step) => (
+            <div
+              key={step.number}
+              className="process-step flex items-start gap-6"
+              style={{ opacity: 1, visibility: 'visible' }}
+            >
+              {/* Number — fixed width, large accent, no overlap */}
+              <div className="flex-shrink-0 w-20 text-right">
+                <span
+                  className="font-bold leading-none text-[#E5E7EB]"
+                  style={{
+                    fontFamily: 'var(--font-clash-display), Space Grotesk, sans-serif',
+                    fontSize: 'clamp(3rem, 5vw, 4.5rem)',
+                  }}
+                >
+                  {step.number}
+                </span>
               </div>
-            ))}
-          </div>
+
+              {/* Content */}
+              <div className="flex-1 pt-2 pb-2 border-b border-[#E5E7EB] last:border-0">
+                <h3
+                  className="font-semibold text-[#0A0A0A] text-xl mb-3"
+                  style={{ fontFamily: 'var(--font-clash-display), Space Grotesk, sans-serif' }}
+                >
+                  {step.title}
+                </h3>
+                <p className="text-[#6B7280] text-sm leading-relaxed">
+                  {step.description}
+                </p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -33,11 +33,19 @@ const PROJECTS = [
     tags: ['Finance', 'Reporting', 'Google Drive'],
     color: '#3B82F6',
   },
+  {
+    id: 4,
+    title: 'Workflow Automation Suite',
+    client: 'Operations Team, Durban',
+    result: '80% reduction in manual process steps across 5 departments',
+    stack: 'OpenClaw, 4 agents, on-premise',
+    tags: ['Operations', 'Automation', 'On-Premise'],
+    color: '#1A6BFF',
+  },
 ];
 
 export default function Work() {
   const containerRef = useRef<HTMLElement>(null);
-  const [activeProject, setActiveProject] = useState(0);
 
   useGSAP(
     () => {
@@ -56,18 +64,32 @@ export default function Work() {
         },
       });
 
+      gsap.utils.toArray<HTMLElement>('.work-card').forEach((card, i) => {
+        gsap.from(card, {
+          y: 40,
+          opacity: 0,
+          duration: 0.6,
+          ease: 'power3.out',
+          delay: (i % 2) * 0.1,
+          scrollTrigger: {
+            trigger: card,
+            start: 'top 85%',
+            toggleActions: 'play none none none',
+            once: true,
+          },
+        });
+      });
+
       return () => ScrollTrigger.getAll().forEach((t) => t.kill());
     },
     { scope: containerRef }
   );
 
-  const project = PROJECTS[activeProject];
-
   return (
     <section
       ref={containerRef}
       id="work"
-      className="bg-[#0A0A0A] py-32 px-6"
+      className="bg-[#F8F8F6] py-32 px-6"
     >
       <div className="max-w-[1280px] mx-auto">
 
@@ -76,7 +98,7 @@ export default function Work() {
             Work
           </p>
           <h2
-            className="font-bold text-white"
+            className="font-bold text-[#0A0A0A]"
             style={{
               fontFamily: 'var(--font-clash-display), Space Grotesk, sans-serif',
               fontSize: 'clamp(2rem, 4vw, 3.5rem)',
@@ -86,119 +108,60 @@ export default function Work() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-
-          {/* Left: Visual panel */}
-          <div
-            className="sticky top-28 rounded-2xl overflow-hidden transition-all duration-700"
-            style={{
-              aspectRatio: '4/3',
-              background: `linear-gradient(135deg, ${project.color}15, #0A0A0A)`,
-              border: `1px solid ${project.color}30`,
-            }}
-          >
-            <div className="absolute inset-0 flex flex-col items-center justify-center p-12 text-center">
-              {/* Abstract system diagram */}
-              <div className="relative w-full max-w-[300px] h-40 mb-8">
-                {/* Central node */}
-                <div
-                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full flex items-center justify-center text-white text-xs font-mono font-bold border-2"
-                  style={{ borderColor: project.color, background: `${project.color}20` }}
-                >
-                  AI
-                </div>
-                {/* Orbiting nodes */}
-                {[0, 1, 2, 3].map((i) => {
-                  const angle = (i * Math.PI * 2) / 4;
-                  const r = 90;
-                  const x = 50 + (Math.cos(angle) * r) / 2;
-                  const y = 50 + (Math.sin(angle) * r) / 4;
-                  return (
-                    <div
-                      key={i}
-                      className="absolute w-8 h-8 rounded-full border border-white/20 bg-[#161616] flex items-center justify-center"
-                      style={{
-                        left: `${x}%`,
-                        top: `${y + 30}%`,
-                        transform: 'translate(-50%, -50%)',
-                      }}
-                    >
-                      <div
-                        className="w-2 h-2 rounded-full"
-                        style={{ background: project.color }}
-                      />
-                    </div>
-                  );
-                })}
+        {/* Clean 2-column grid — no horizontal scroll, no sticky panel */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {PROJECTS.map((p) => (
+            <div
+              key={p.id}
+              className="work-card p-8 bg-white border border-[#E5E7EB] rounded-2xl hover:border-[#1A6BFF]/30 hover:shadow-md transition-all duration-300"
+            >
+              {/* Tags */}
+              <div className="flex flex-wrap gap-2 mb-4">
+                {p.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="text-xs px-2 py-0.5 rounded-full bg-[#F3F4F6] text-[#6B7280]"
+                  >
+                    {tag}
+                  </span>
+                ))}
               </div>
 
-              <p className="text-white/30 text-xs uppercase tracking-widest mb-2">
-                {project.stack}
-              </p>
-              <p
-                className="font-bold text-white text-xl"
+              {/* Title */}
+              <h3
+                className="text-[#0A0A0A] font-semibold text-xl mb-3"
                 style={{ fontFamily: 'var(--font-clash-display), Space Grotesk, sans-serif' }}
               >
-                {project.title}
-              </p>
-            </div>
-          </div>
+                {p.title}
+              </h3>
 
-          {/* Right: Project list */}
-          <div className="space-y-4">
-            {PROJECTS.map((p, i) => (
-              <button
-                key={p.id}
-                onClick={() => setActiveProject(i)}
-                className={`w-full text-left p-6 rounded-2xl border transition-all duration-300 ${
-                  i === activeProject
-                    ? 'bg-[#161616] border-[#1A6BFF]/40'
-                    : 'bg-[#111111] border-[#2A2A2A] hover:border-white/10'
-                }`}
-              >
-                <div className="flex items-start justify-between gap-4">
-                  <div className="flex-1">
-                    <div className="flex flex-wrap gap-2 mb-3">
-                      {p.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="text-xs px-2 py-0.5 rounded-full bg-white/5 text-white/40"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                    <h3
-                      className="text-white font-semibold text-lg mb-2"
-                      style={{ fontFamily: 'var(--font-clash-display), Space Grotesk, sans-serif' }}
-                    >
-                      {p.title}
-                    </h3>
-                    <p className="text-white/50 text-sm leading-relaxed">{p.result}</p>
-                    <p className="text-white/30 text-xs mt-2">Client: {p.client}</p>
-                  </div>
-                  <div
-                    className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 ${
-                      i === activeProject
-                        ? 'bg-[#1A6BFF] text-white'
-                        : 'border border-[#2A2A2A] text-white/20'
-                    }`}
-                  >
-                    →
-                  </div>
+              {/* Result */}
+              <p className="text-[#6B7280] text-sm leading-relaxed mb-4">{p.result}</p>
+
+              {/* Footer row */}
+              <div className="flex items-center justify-between pt-4 border-t border-[#E5E7EB]">
+                <div>
+                  <p className="text-[#9CA3AF] text-xs">Client: {p.client}</p>
+                  <p className="text-[#9CA3AF] text-xs mt-0.5">{p.stack}</p>
                 </div>
-              </button>
-            ))}
-
-            <div className="pt-4">
-              <a
-                href="#contact"
-                className="text-[#1A6BFF] text-sm hover:underline"
-              >
-                Interested in a custom build? Let&apos;s talk →
-              </a>
+                <div
+                  className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0"
+                  style={{ background: `${p.color}15`, color: p.color }}
+                >
+                  →
+                </div>
+              </div>
             </div>
-          </div>
+          ))}
+        </div>
+
+        <div className="pt-10 text-center">
+          <a
+            href="#contact"
+            className="text-[#1A6BFF] text-sm hover:underline"
+          >
+            Interested in a custom build? Let&apos;s talk →
+          </a>
         </div>
       </div>
     </section>

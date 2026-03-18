@@ -70,7 +70,7 @@ export default function CTA() {
     <section
       ref={containerRef}
       id="contact"
-      className="bg-[#0A0A0A] py-40 px-6 relative overflow-hidden"
+      className="bg-[#F8F8F6] py-40 px-6 relative overflow-hidden"
     >
       {/* Glow */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
@@ -84,7 +84,7 @@ export default function CTA() {
 
         <h2
           ref={headingRef}
-          className="font-bold text-white leading-tight mb-8"
+          className="font-bold text-[#0A0A0A] leading-tight mb-8"
           style={{
             fontFamily: 'var(--font-clash-display), Space Grotesk, sans-serif',
             fontSize: 'clamp(2.5rem, 6vw, 5rem)',
@@ -93,7 +93,7 @@ export default function CTA() {
           Ready to build your AI operations team?
         </h2>
 
-        <p className="cta-sub text-white/50 text-lg leading-relaxed mb-12 max-w-xl mx-auto">
+        <p className="cta-sub text-[#6B7280] text-lg leading-relaxed mb-12 max-w-xl mx-auto">
           Let&apos;s talk about what&apos;s possible for your business. No pressure. 30 minutes. Real answers.
         </p>
 
@@ -106,8 +106,8 @@ export default function CTA() {
           </MagneticButton>
         </div>
 
-        <p className="mt-8 text-white/20 text-sm">
-          Or email: <a href="mailto:admin@dylanwichmannai.com" className="text-white/40 hover:text-white transition-colors">admin@dylanwichmannai.com</a>
+        <p className="mt-8 text-[#9CA3AF] text-sm">
+          Or email: <a href="mailto:admin@dylanwichmannai.com" className="text-[#6B7280] hover:text-[#0A0A0A] transition-colors">admin@dylanwichmannai.com</a>
         </p>
       </div>
     </section>

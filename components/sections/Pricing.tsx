@@ -26,7 +26,7 @@ export default function Pricing() {
   return (
     <section
       id="pricing"
-      className="bg-[#111111] py-32 px-6"
+      className="bg-white py-32 px-6"
       style={{ opacity: 1, visibility: 'visible' }}
       data-visible="true"
     >
@@ -34,7 +34,7 @@ export default function Pricing() {
 
         <div className="mb-16 text-center" style={{ opacity: 1 }}>
           <h2
-            className="font-bold text-white mb-6"
+            className="font-bold text-[#0A0A0A] mb-6"
             style={{
               fontFamily: 'var(--font-clash-display), Space Grotesk, sans-serif',
               fontSize: 'clamp(2rem, 4vw, 3.5rem)',
@@ -42,7 +42,7 @@ export default function Pricing() {
           >
             Ready to transform your business?
           </h2>
-          <p className="text-white/50 text-base max-w-2xl mx-auto">
+          <p className="text-[#6B7280] text-base max-w-2xl mx-auto">
             Every engagement starts with a free discovery call.
           </p>
         </div>
@@ -59,9 +59,9 @@ export default function Pricing() {
               style={{ opacity: 1 }}
               className={`relative p-8 rounded-2xl border flex flex-col ${
                 plan.highlighted
-                  ? 'bg-[#1A6BFF]/10 border-[#1A6BFF]/40 scale-[1.02]'
-                  : 'bg-[#161616] border-[#2A2A2A]'
-              }`}
+                  ? 'bg-[#1A6BFF]/5 border-[#1A6BFF]/40 scale-[1.02] shadow-md'
+                  : 'bg-white border-[#E5E7EB] hover:shadow-sm'
+              } transition-shadow duration-300`}
             >
               {plan.badge && (
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#1A6BFF] text-white text-xs font-medium px-3 py-1 rounded-full">
@@ -71,12 +71,12 @@ export default function Pricing() {
 
               <div className="mb-6 flex-1">
                 <p
-                  className="font-bold text-white text-2xl mb-4"
+                  className="font-bold text-[#0A0A0A] text-2xl mb-4"
                   style={{ fontFamily: 'var(--font-clash-display), Space Grotesk, sans-serif' }}
                 >
                   {plan.name}
                 </p>
-                <p className="text-white/60 text-sm leading-relaxed">{plan.description}</p>
+                <p className="text-[#6B7280] text-sm leading-relaxed">{plan.description}</p>
               </div>
 
               <MagneticButton
@@ -84,7 +84,7 @@ export default function Pricing() {
                 className={`w-full py-3 rounded-full text-sm font-medium text-center transition-colors ${
                   plan.highlighted
                     ? 'bg-[#1A6BFF] text-white hover:bg-[#0055E0]'
-                    : 'border border-white/20 text-white hover:border-white/40'
+                    : 'border border-[#E5E7EB] text-[#0A0A0A] hover:border-[#1A6BFF] hover:text-[#1A6BFF]'
                 }`}
               >
                 Book a Discovery Call →
@@ -93,7 +93,7 @@ export default function Pricing() {
           ))}
         </div>
 
-        <p className="text-center text-white/30 text-sm mt-10">
+        <p className="text-center text-[#9CA3AF] text-sm mt-10">
           All engagements are tailored. Dylan will scope your project personally.
         </p>
       </div>

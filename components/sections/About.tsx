@@ -66,7 +66,7 @@ export default function About() {
     <section
       ref={containerRef}
       id="about"
-      className="bg-[#0A0A0A] py-32 px-6 overflow-hidden"
+      className="bg-white py-32 px-6 overflow-hidden"
       style={{ opacity: 1 }}
     >
       <div className="max-w-[1280px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -78,7 +78,7 @@ export default function About() {
           </p>
 
           <h2
-            className="about-line font-bold text-white leading-tight mb-8"
+            className="about-line font-bold text-[#0A0A0A] leading-tight mb-8"
             style={{
               fontFamily: 'var(--font-clash-display), Space Grotesk, sans-serif',
               fontSize: 'clamp(2rem, 5vw, 4rem)',
@@ -88,29 +88,29 @@ export default function About() {
             Cape Town&apos;s AI guy.
           </h2>
 
-          <p className="about-line text-white/60 text-base leading-relaxed mb-5" style={{ opacity: 1 }}>
+          <p className="about-line text-[#6B7280] text-base leading-relaxed mb-5" style={{ opacity: 1 }}>
             I&apos;m Dylan Wichmann — Cape Town-based AI systems architect and consultant. I don&apos;t just talk about AI. I build it, deploy it, and hand you the keys.
           </p>
 
-          <p className="about-line text-white/60 text-base leading-relaxed mb-5" style={{ opacity: 1 }}>
+          <p className="about-line text-[#6B7280] text-base leading-relaxed mb-5" style={{ opacity: 1 }}>
             My work: designing multi-agent systems that run 24/7 on your own hardware, doing the work of an entire operations team without the headcount.
           </p>
 
-          <p className="about-line text-white/60 text-base leading-relaxed mb-10" style={{ opacity: 1 }}>
+          <p className="about-line text-[#6B7280] text-base leading-relaxed mb-10" style={{ opacity: 1 }}>
             Built for South African businesses. No USD cloud bills, no latency issues, no vendor lock-in. Your AI stack, on your terms.
           </p>
 
           {/* Aside stats */}
-          <div className="grid grid-cols-3 gap-6 border-t border-[#2A2A2A] pt-8">
+          <div className="grid grid-cols-3 gap-6 border-t border-[#E5E7EB] pt-8">
             {ASIDE_STATS.map(({ value, label }) => (
               <div key={label} className="about-line" style={{ opacity: 1 }}>
                 <p
-                  className="font-bold text-white text-2xl mb-1"
+                  className="font-bold text-[#0A0A0A] text-2xl mb-1"
                   style={{ fontFamily: 'var(--font-clash-display), Space Grotesk, sans-serif' }}
                 >
                   {value}
                 </p>
-                <p className="text-white/40 text-xs leading-snug">{label}</p>
+                <p className="text-[#6B7280] text-xs leading-snug">{label}</p>
               </div>
             ))}
           </div>
@@ -118,7 +118,7 @@ export default function About() {
 
         {/* Right: Photo */}
         <div
-          className="about-image relative rounded-2xl overflow-hidden max-w-[480px] mx-auto lg:mx-0 w-full"
+          className="about-image relative rounded-2xl overflow-hidden max-w-[480px] mx-auto lg:mx-0 w-full shadow-sm border border-[#E5E7EB]"
           style={{ aspectRatio: '4/5', opacity: 1 }}
         >
           <Image
@@ -127,11 +127,11 @@ export default function About() {
             fill
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/40 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
           {/* Cape Town badge */}
-          <div className="absolute top-6 right-6 bg-[#0A0A0A]/80 backdrop-blur-md border border-white/10 rounded-xl px-4 py-3">
-            <p className="text-white/60 text-xs uppercase tracking-wider">Based in</p>
-            <p className="text-white text-sm font-medium mt-0.5">Cape Town 🇿🇦</p>
+          <div className="absolute top-6 right-6 bg-white/90 backdrop-blur-md border border-[#E5E7EB] rounded-xl px-4 py-3 shadow-sm">
+            <p className="text-[#6B7280] text-xs uppercase tracking-wider">Based in</p>
+            <p className="text-[#0A0A0A] text-sm font-medium mt-0.5">Cape Town 🇿🇦</p>
           </div>
         </div>
       </div>

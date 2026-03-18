@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -31,8 +31,6 @@ const TESTIMONIALS = [
 
 export default function Results() {
   const containerRef = useRef<HTMLElement>(null);
-  const trackRef = useRef<HTMLDivElement>(null);
-  const [activeIndex, setActiveIndex] = useState(0);
 
   useGSAP(
     () => {
@@ -60,7 +58,7 @@ export default function Results() {
     <section
       ref={containerRef}
       id="results"
-      className="bg-[#111111] py-32 px-6 overflow-hidden"
+      className="bg-white py-32 px-6 overflow-hidden"
     >
       <div className="max-w-[1280px] mx-auto">
 
@@ -69,7 +67,7 @@ export default function Results() {
             Results
           </p>
           <h2
-            className="font-bold text-white"
+            className="font-bold text-[#0A0A0A]"
             style={{
               fontFamily: 'var(--font-clash-display), Space Grotesk, sans-serif',
               fontSize: 'clamp(2rem, 4vw, 3.5rem)',
@@ -84,21 +82,21 @@ export default function Results() {
           {TESTIMONIALS.map((t, i) => (
             <div
               key={i}
-              className="p-8 bg-[#161616] border border-[#2A2A2A] rounded-2xl hover:border-[#1A6BFF]/30 transition-colors duration-300"
+              className="p-8 bg-white border border-[#E5E7EB] rounded-2xl hover:border-[#1A6BFF]/30 hover:shadow-sm transition-all duration-300"
             >
               {/* Result badge */}
-              <div className="inline-flex items-center gap-2 bg-[#1A6BFF]/10 border border-[#1A6BFF]/20 rounded-full px-3 py-1 mb-6">
+              <div className="inline-flex items-center gap-2 bg-[#1A6BFF]/8 border border-[#1A6BFF]/20 rounded-full px-3 py-1 mb-6">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#1A6BFF]" />
                 <span className="text-[#1A6BFF] text-xs font-medium">{t.result}</span>
               </div>
 
-              <blockquote className="text-white/70 text-sm leading-relaxed mb-6">
+              <blockquote className="text-[#6B7280] text-sm leading-relaxed mb-6">
                 &ldquo;{t.quote}&rdquo;
               </blockquote>
 
-              <div className="border-t border-[#2A2A2A] pt-4">
-                <p className="text-white text-sm font-medium">{t.author}</p>
-                <p className="text-white/40 text-xs mt-0.5">{t.company}</p>
+              <div className="border-t border-[#E5E7EB] pt-4">
+                <p className="text-[#0A0A0A] text-sm font-medium">{t.author}</p>
+                <p className="text-[#9CA3AF] text-xs mt-0.5">{t.company}</p>
               </div>
             </div>
           ))}
@@ -111,16 +109,16 @@ export default function Results() {
             { before: '4hr response time on queries', after: '2min average, 24/7' },
             { before: 'R50K/month consultants', after: 'R5K/month system cost' },
           ].map(({ before, after }, i) => (
-            <div key={i} className="p-6 bg-[#0A0A0A] border border-[#2A2A2A] rounded-xl">
+            <div key={i} className="p-6 bg-[#F8F8F6] border border-[#E5E7EB] rounded-xl">
               <div className="flex items-start gap-4">
                 <div className="flex-1">
-                  <p className="text-white/30 text-xs uppercase tracking-wider mb-1.5">Before</p>
-                  <p className="text-white/50 text-sm line-through">{before}</p>
+                  <p className="text-[#9CA3AF] text-xs uppercase tracking-wider mb-1.5">Before</p>
+                  <p className="text-[#9CA3AF] text-sm line-through">{before}</p>
                 </div>
                 <span className="text-[#1A6BFF] text-lg mt-4">→</span>
                 <div className="flex-1">
                   <p className="text-[#1A6BFF] text-xs uppercase tracking-wider mb-1.5">After</p>
-                  <p className="text-white text-sm font-medium">{after}</p>
+                  <p className="text-[#0A0A0A] text-sm font-medium">{after}</p>
                 </div>
               </div>
             </div>

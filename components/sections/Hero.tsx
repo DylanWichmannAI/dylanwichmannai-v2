@@ -102,22 +102,22 @@ export default function Hero() {
     <section
       ref={containerRef}
       id="hero"
-      className="relative min-h-screen flex items-center overflow-hidden bg-[#0A0A0A]"
+      className="relative min-h-screen flex items-center overflow-hidden bg-white"
     >
-      {/* Background grid */}
+      {/* Background grid — subtle on white */}
       <div
-        className="absolute inset-0 opacity-[0.03]"
+        className="absolute inset-0 opacity-[0.04]"
         style={{
           backgroundImage: `
-            linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)
+            linear-gradient(rgba(0,0,0,0.6) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(0,0,0,0.6) 1px, transparent 1px)
           `,
           backgroundSize: '60px 60px',
         }}
       />
 
       {/* Ambient glow */}
-      <div className="absolute top-1/3 left-1/4 w-[600px] h-[600px] rounded-full bg-[#1A6BFF]/8 blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/3 left-1/4 w-[600px] h-[600px] rounded-full bg-[#1A6BFF]/6 blur-[120px] pointer-events-none" />
 
       {/* Particle field */}
       <div className="absolute inset-0 pointer-events-none">
@@ -138,7 +138,7 @@ export default function Hero() {
 
           <h1
             ref={headingRef}
-            className="font-bold text-white leading-[1.05] mb-8"
+            className="font-bold text-[#0A0A0A] leading-[1.05] mb-8"
             style={{
               fontFamily: 'var(--font-clash-display), Space Grotesk, sans-serif',
               fontSize: 'clamp(2.8rem, 7vw, 6rem)',
@@ -149,7 +149,7 @@ export default function Hero() {
 
           <p
             ref={subRef}
-            className="text-white/60 text-lg leading-relaxed mb-10 max-w-[480px]"
+            className="text-[#6B7280] text-lg leading-relaxed mb-10 max-w-[480px]"
           >
             I deploy custom AI agent systems that automate 80% of your operations — built on your hardware, under your control. No subscriptions. No lock-in.
           </p>
@@ -165,7 +165,7 @@ export default function Hero() {
             <a
               href="#work"
               data-cursor-label="View"
-              className="px-8 py-4 border border-white/20 text-white font-medium rounded-full text-base hover:border-white/40 transition-colors"
+              className="px-8 py-4 border border-[#E5E7EB] text-[#0A0A0A] font-medium rounded-full text-base hover:border-[#1A6BFF] hover:text-[#1A6BFF] transition-colors"
             >
               See Our Work ↓
             </a>
@@ -185,21 +185,21 @@ export default function Hero() {
             className="object-cover object-top"
             priority
           />
-          {/* Gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/60 via-transparent to-transparent" />
+          {/* Lighter overlay for white theme */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
 
           {/* Floating badge */}
-          <div className="absolute bottom-6 left-6 bg-white/10 backdrop-blur-md border border-white/10 rounded-xl px-4 py-3">
-            <p className="text-white text-sm font-medium">🇿🇦 Cape Town, South Africa</p>
-            <p className="text-white/60 text-xs mt-0.5">Available for new clients</p>
+          <div className="absolute bottom-6 left-6 bg-white/90 backdrop-blur-md border border-[#E5E7EB] rounded-xl px-4 py-3 shadow-sm">
+            <p className="text-[#0A0A0A] text-sm font-medium">🇿🇦 Cape Town, South Africa</p>
+            <p className="text-[#6B7280] text-xs mt-0.5">Available for new clients</p>
           </div>
         </div>
       </div>
 
       {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 flex flex-col items-center gap-2 animate-bounce-slow">
-        <span className="text-white/30 text-xs tracking-widest uppercase">Scroll</span>
-        <div className="w-px h-8 bg-gradient-to-b from-white/30 to-transparent" />
+        <span className="text-[#6B7280] text-xs tracking-widest uppercase">Scroll</span>
+        <div className="w-px h-8 bg-gradient-to-b from-[#6B7280]/50 to-transparent" />
       </div>
     </section>
   );
