@@ -120,7 +120,7 @@ export default function About() {
           style={{ aspectRatio: '4/5' }}
         >
           <Image
-            src="/images/dylan-about.jpg"
+            src="/images/hero-dylan.png"
             alt="Dylan Wichmann working — Cape Town AI consultant"
             fill
             className="object-cover"

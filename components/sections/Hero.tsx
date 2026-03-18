@@ -179,7 +179,7 @@ export default function Hero() {
           style={{ aspectRatio: '4/5' }}
         >
           <Image
-            src="/images/dylan-hero.jpg"
+            src="/images/hero-dylan.png"
             alt="Dylan Wichmann — AI Consultant, Cape Town"
             fill
             className="object-cover object-top"
