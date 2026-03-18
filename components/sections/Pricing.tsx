@@ -27,10 +27,12 @@ export default function Pricing() {
     <section
       id="pricing"
       className="bg-[#111111] py-32 px-6"
+      style={{ opacity: 1, visibility: 'visible' }}
+      data-visible="true"
     >
       <div className="max-w-[1280px] mx-auto">
 
-        <div className="mb-16 text-center">
+        <div className="mb-16 text-center" style={{ opacity: 1 }}>
           <h2
             className="font-bold text-white mb-6"
             style={{
@@ -41,7 +43,7 @@ export default function Pricing() {
             Ready to transform your business?
           </h2>
           <p className="text-white/50 text-base max-w-2xl mx-auto">
-            Every engagement starts with a free discovery call. We&apos;ll map out exactly what AI can do for your business — no obligation.
+            Every engagement starts with a free discovery call.
           </p>
         </div>
 
@@ -49,10 +51,12 @@ export default function Pricing() {
           {PLANS.map((plan, i) => (
             <motion.div
               key={plan.name}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 1, y: 0 }}
               whileInView={{ opacity: 1, y: 0 }}
+              animate={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.6, delay: i * 0.15, ease: [0.25, 0.1, 0.25, 1] }}
+              style={{ opacity: 1 }}
               className={`relative p-8 rounded-2xl border flex flex-col ${
                 plan.highlighted
                   ? 'bg-[#1A6BFF]/10 border-[#1A6BFF]/40 scale-[1.02]'

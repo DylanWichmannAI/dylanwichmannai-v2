@@ -45,15 +45,16 @@ export default function Services() {
       gsap.registerPlugin(ScrollTrigger);
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
+      // Use gsap.from so elements START visible and animate FROM an offset
       gsap.from('.services-header', {
         y: 30,
-        opacity: 0,
         duration: 0.7,
         ease: 'power3.out',
         scrollTrigger: {
           trigger: '.services-header',
           start: 'top 85%',
           toggleActions: 'play none none none',
+          once: true,
         },
       });
 
@@ -67,12 +68,13 @@ export default function Services() {
       ref={containerRef}
       id="services"
       className="bg-[#111111] py-32 px-6"
-      style={{ opacity: 1 }}
+      style={{ opacity: 1, visibility: 'visible' }}
+      data-visible="true"
     >
       <div className="max-w-[1280px] mx-auto">
 
         {/* Header */}
-        <div className="services-header mb-16" style={{ opacity: 1 }}>
+        <div className="services-header mb-16" style={{ opacity: 1, visibility: 'visible' }}>
           <p className="text-[#1A6BFF] text-sm font-medium tracking-[0.2em] uppercase mb-4">
             Services
           </p>

@@ -19,8 +19,9 @@ export default function HoverCard({
 }: HoverCardProps) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 40 }}
+      initial={{ opacity: 1, y: 0 }}
       whileInView={{ opacity: 1, y: 0 }}
+      animate={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-80px' }}
       transition={{
         duration: 0.6,
@@ -28,6 +29,7 @@ export default function HoverCard({
         ease: [0.25, 0.1, 0.25, 1],
       }}
       whileHover={{ y: -8 }}
+      style={{ opacity: 1 }}
       className="group relative p-8 bg-[#111111] border border-[#2A2A2A] rounded-2xl hover:border-[#1A6BFF]/40 transition-colors duration-300 cursor-pointer"
     >
       {/* Hover glow */}

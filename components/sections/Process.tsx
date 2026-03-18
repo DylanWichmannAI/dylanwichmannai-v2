@@ -40,7 +40,7 @@ export default function Process() {
       gsap.registerPlugin(ScrollTrigger);
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-      // Animate the vertical line drawing down
+      // Animate the vertical line drawing down (no opacity change — just scaleY)
       gsap.from('.process-line', {
         scaleY: 0,
         transformOrigin: 'top center',
@@ -53,17 +53,17 @@ export default function Process() {
         },
       });
 
-      // Animate each step
+      // Animate each step FROM an offset — steps start fully visible
       gsap.utils.toArray<HTMLElement>('.process-step').forEach((step) => {
         gsap.from(step, {
           x: -40,
-          opacity: 0,
           duration: 0.7,
           ease: 'power3.out',
           scrollTrigger: {
             trigger: step,
             start: 'top 80%',
             toggleActions: 'play none none none',
+            once: true,
           },
         });
       });
@@ -78,12 +78,13 @@ export default function Process() {
       ref={containerRef}
       id="process"
       className="bg-[#0A0A0A] py-32 px-6"
-      style={{ opacity: 1 }}
+      style={{ opacity: 1, visibility: 'visible' }}
+      data-visible="true"
     >
       <div className="max-w-[1280px] mx-auto">
 
         {/* Header */}
-        <div className="mb-20">
+        <div className="mb-20" style={{ opacity: 1 }}>
           <p className="text-[#1A6BFF] text-sm font-medium tracking-[0.2em] uppercase mb-4">
             Process
           </p>
@@ -111,7 +112,8 @@ export default function Process() {
               <div
                 key={step.number}
                 className="process-step relative pl-20 pb-16 last:pb-0"
-                style={{ opacity: 1 }}
+                style={{ opacity: 1, visibility: 'visible' }}
+                data-visible="true"
               >
                 {/* Number badge */}
                 <div className="absolute left-0 top-0 w-12 h-12 rounded-full bg-[#0A0A0A] border border-[#2A2A2A] flex items-center justify-center z-10">
