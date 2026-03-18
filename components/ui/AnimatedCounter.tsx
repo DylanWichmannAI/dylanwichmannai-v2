@@ -15,7 +15,9 @@ export default function AnimatedCounter({
   prefix = '',
   duration = 2000,
 }: AnimatedCounterProps) {
-  const [count, setCount] = useState(0);
+  // Default to the real value so it renders correctly even if the
+  // IntersectionObserver never fires (SSR, bots, reduced-motion, etc.)
+  const [count, setCount] = useState(end);
   const [started, setStarted] = useState(false);
   const ref = useRef<HTMLSpanElement>(null);
 
@@ -26,6 +28,8 @@ export default function AnimatedCounter({
           setStarted(true);
           observer.disconnect();
 
+          // Animate from 0 to end
+          setCount(0);
           const startTime = performance.now();
           const step = (currentTime: number) => {
             const elapsed = currentTime - startTime;
